@@ -1,0 +1,8 @@
+
+rootProject.name="contactvault-parent"
+
+include("app")
+include("function-cognito-event")
+include("aws-utils")
+include("persistence")
+include("infra")

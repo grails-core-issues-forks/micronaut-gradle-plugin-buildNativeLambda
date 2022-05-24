@@ -1,0 +1,32 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencies {
+    annotationProcessor(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+    annotationProcessor "io.micronaut:micronaut-validation"
+
+    implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    implementation "io.micronaut:micronaut-runtime"
+    implementation "io.micronaut:micronaut-inject"
+    implementation "io.micronaut:micronaut-validation"
+    implementation("io.micronaut.aws:micronaut-aws-sdk-v2")
+    implementation("software.amazon.awssdk:dynamodb")
+    implementation(project(":aws-utils"))
+    implementation 'com.amirkhawaja:ksuid:1.0.0'
+    implementation platform("com.amazonaws:aws-xray-recorder-sdk-bom:2.11.0")
+    implementation "com.amazonaws:aws-xray-recorder-sdk-aws-sdk-v2"
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+}
+
+test {
+    useJUnitPlatform()
+}
